@@ -1,19 +1,28 @@
-import { Controller, Get, Post, Body } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  HttpException,
+  HttpStatus,
+  UseFilters,
+} from "@nestjs/common";
 import { CreateCatDto } from "./dto/create-cats.dto";
 import { CatsService } from "./cats.service";
-import { Cat } from "./interfaces/cat.interface";
+import { HttpFilterException } from "./filter/http-exception.filter";
 
 @Controller("cats")
 export class CatsController {
   constructor(private catsService: CatsService) {}
 
   @Post()
+  @UseFilters(new HttpFilterException())
   async create(@Body() createCatDto: CreateCatDto) {
-    this.catsService.create(createCatDto);
+    throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
   }
 
   @Get()
-  async findAll(): Promise<Cat[]> {
-    return this.catsService.findAll();
+  async findAll() {
+    throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
   }
 }
