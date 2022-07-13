@@ -6,6 +6,8 @@ import {
   HttpException,
   HttpStatus,
   UseFilters,
+  ParseIntPipe,
+  Param,
 } from "@nestjs/common";
 import { CreateCatDto } from "./dto/create-cats.dto";
 import { CatsService } from "./cats.service";
@@ -20,6 +22,11 @@ export class CatsController {
   async create(@Body() createCatDto: CreateCatDto) {
     throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
   }
+
+  // @Get()
+  // async findOne(@Param("id", ParseIntPipe) id: number) {
+  //   return this.catsService.findOne(id);
+  // }
 
   @Get()
   async findAll() {
