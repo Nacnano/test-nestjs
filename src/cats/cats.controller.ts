@@ -5,24 +5,19 @@ import {
   Body,
   HttpException,
   HttpStatus,
-  UseFilters,
-  ParseIntPipe,
-  Param,
-  UseGuards,
-  SetMetadata,
+  UseInterceptors,
 } from "@nestjs/common";
 import { CreateCatDto } from "./dto/create-cats.dto";
 import { CatsService } from "./cats.service";
-import { HttpFilterException } from "./filter/http-exception.filter";
-import { RolesGuard } from "./guard/roles.guard";
+import { LoggingInterceptor } from "./interceptor/logging.interceptor";
+import { User } from "./decorator/user.decorator";
 
-@Controller("cats")
-@UseGuards(RolesGuard)
+@Controller("cats/dogs")
+@UseInterceptors(LoggingInterceptor)
 export class CatsController {
   constructor(private catsService: CatsService) {}
 
   @Post()
-  @SetMetadata("roles", ["admin"])
   async create(@Body() createCatDto: CreateCatDto) {
     this.catsService.create(createCatDto);
   }
@@ -33,7 +28,13 @@ export class CatsController {
   // }
 
   @Get()
-  async findAll() {
+  findAll() {
+    return "This cat";
     throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
   }
+  // This is the decorator part of the overview
+  // @Get()
+  // async findOne(@User("firstName") firstName: string) {
+  //   console.log(`Hello ${firstName}`);
+  // }
 }
