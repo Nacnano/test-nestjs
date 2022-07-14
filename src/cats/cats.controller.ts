@@ -12,7 +12,7 @@ import { CatsService } from "./cats.service";
 import { LoggingInterceptor } from "./interceptor/logging.interceptor";
 import { User } from "./decorator/user.decorator";
 
-@Controller("cats/dogs")
+@Controller("cats")
 @UseInterceptors(LoggingInterceptor)
 export class CatsController {
   constructor(private catsService: CatsService) {}
@@ -27,14 +27,13 @@ export class CatsController {
   //   return this.catsService.findOne(id);
   // }
 
-  @Get()
+  @Get("hi")
   findAll() {
     return "This cat";
-    throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
+    // throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
   }
-
-  @Get()
-  async findOne(@User("firstName") firstName: string) {
-    console.log(`Hello ${firstName}`);
-  }
+  // @Get()
+  // async findOne(@User("firstName") firstName: string) {
+  //   console.log(`Hello ${firstName}`);
+  // }
 }
