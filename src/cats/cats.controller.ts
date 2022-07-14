@@ -8,19 +8,23 @@ import {
   UseFilters,
   ParseIntPipe,
   Param,
+  UseGuards,
+  SetMetadata,
 } from "@nestjs/common";
 import { CreateCatDto } from "./dto/create-cats.dto";
 import { CatsService } from "./cats.service";
 import { HttpFilterException } from "./filter/http-exception.filter";
+import { RolesGuard } from "./guard/roles.guard";
 
 @Controller("cats")
+@UseGuards(RolesGuard)
 export class CatsController {
   constructor(private catsService: CatsService) {}
 
   @Post()
-  @UseFilters(new HttpFilterException())
+  @SetMetadata("roles", ["admin"])
   async create(@Body() createCatDto: CreateCatDto) {
-    throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
+    this.catsService.create(createCatDto);
   }
 
   // @Get()
