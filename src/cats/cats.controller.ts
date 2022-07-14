@@ -32,9 +32,9 @@ export class CatsController {
     return "This cat";
     throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
   }
-  // This is the decorator part of the overview
-  // @Get()
-  // async findOne(@User("firstName") firstName: string) {
-  //   console.log(`Hello ${firstName}`);
-  // }
+
+  @Get()
+  async findOne(@User("firstName") firstName: string) {
+    console.log(`Hello ${firstName}`);
+  }
 }
