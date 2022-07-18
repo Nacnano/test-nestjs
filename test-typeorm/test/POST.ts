@@ -1,14 +1,16 @@
 (async () => {
-  const rawResponse = await fetch("http://localhost:3000/users/create", {
+  const rawResponse = await fetch("http://localhost:3000/users", {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      id: 123,
-      firstName: "KU",
-      lastName: "Y",
+      id: 69,
+      firstName: "Ligma",
+      lastName: "Ball",
+      email: "ligma.ball@nacnano.com",
+      password: "llabamgil",
       isActive: true,
     }),
   });

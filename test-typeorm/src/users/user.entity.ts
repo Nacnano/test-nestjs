@@ -11,10 +11,10 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column()
+  @Column({ default: "example@nacnano.com" })
   email: string;
 
-  @Column()
+  @Column({ default: "password" })
   password: string;
 
   @Column({ default: true })

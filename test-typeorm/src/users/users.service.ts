@@ -1,17 +1,15 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { DataSource } from "typeorm";
 import { User } from "./user.entity";
 import { Repository } from "typeorm";
 import { CreateUserDto } from "./dto/createUser.dto";
+import { UpdateUserDto } from "./dto/updateUser.dto";
 
 @Injectable()
 export class UsersService {
   constructor(
-    // private users: User[] = [],
-    private dataSource: DataSource,
     @InjectRepository(User)
-    private readonly usersRepository: Repository<User>
+    private usersRepository: Repository<User>
   ) {}
 
   async findAll(): Promise<User[]> {
@@ -24,31 +22,21 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     const newUser = new User();
+    newUser.id = createUserDto.id;
     newUser.firstName = createUserDto.firstName;
     newUser.lastName = createUserDto.lastName;
+    newUser.isActive = createUserDto.isActive;
+    newUser.email = createUserDto.email;
+    newUser.password = createUserDto.password;
     return this.usersRepository.save(newUser);
   }
 
+  // async update(id: number, updateData: UpdateUserDto) {
+  //   const data = await this.usersRepository.findOneBy({ id });
+  //   return this.usersRepository.save(updateData);
+  // }
+
   async remove(id: number): Promise<void> {
     await this.usersRepository.delete(id);
-  }
-
-  async createMany(users: User[]) {
-    const queryRunner = this.dataSource.createQueryRunner();
-
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-    try {
-      await queryRunner.manager.save(users[0]);
-      await queryRunner.manager.save(users[1]);
-
-      await queryRunner.commitTransaction();
-    } catch (err) {
-      // since we have errors lets rollback the changes we made
-      await queryRunner.rollbackTransaction();
-    } finally {
-      // you need to release a queryRunner which was manually instantiated
-      await queryRunner.release();
-    }
   }
 }

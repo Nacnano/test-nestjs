@@ -6,8 +6,10 @@ import {
   Param,
   Body,
   Delete,
+  Patch,
 } from "@nestjs/common";
 import { CreateUserDto } from "./dto/createUser.dto";
+import { UpdateUserDto } from "./dto/updateUser.dto";
 import { UsersService } from "./users.service";
 import { User } from "./user.entity";
 
@@ -29,12 +31,6 @@ export class UsersController {
   }
 
   @Get()
-  async getUsers(): Promise<string> {
-    console.log("GET user");
-    return "get new users";
-  }
-
-  @Get("findall")
   async findAll(): Promise<User[]> {
     console.log("findall");
     return this.usersService.findAll();
@@ -45,6 +41,11 @@ export class UsersController {
     console.log(id);
     return this.usersService.findOne(id);
   }
+
+  // @Patch(":id")
+  // update(@Param("id") id: number, @Body() updateUserDto: UpdateUserDto) {
+  //   return this.usersService.update(+id, updateUserDto);
+  // }
 
   @Delete(":id")
   async remove(@Param("id") id: number): Promise<void> {

@@ -10,5 +10,5 @@ export class CreateUserDto {
   @IsNotEmpty()
   password: string;
 
-  isActive: string;
+  isActive: boolean;
 }
