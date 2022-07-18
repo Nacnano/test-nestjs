@@ -14,16 +14,18 @@ export class UsersService {
     private readonly usersRepository: Repository<User>
   ) {}
 
-  findAll(): Promise<User[]> {
+  async findAll(): Promise<User[]> {
     return this.usersRepository.find();
   }
 
-  findOne(id: number): Promise<User> {
+  async findOne(id: number): Promise<User> {
     return this.usersRepository.findOneBy({ id });
   }
 
-  createUser(createUserDto: CreateUserDto) {
-    const newUser = this.usersRepository.create(createUserDto);
+  async create(createUserDto: CreateUserDto) {
+    const newUser = new User();
+    newUser.firstName = createUserDto.firstName;
+    newUser.lastName = createUserDto.lastName;
     return this.usersRepository.save(newUser);
   }
 
