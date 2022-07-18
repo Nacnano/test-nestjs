@@ -11,6 +11,14 @@ import { CreateUserDto } from "./dto/createUser.dto";
 import { UsersService } from "./users.service";
 import { User } from "./user.entity";
 
+@Controller()
+export class MainController {
+  @Get()
+  @Redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+  async redirect(): Promise<object> {
+    return { url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" };
+  }
+}
 @Controller("users")
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -36,12 +44,6 @@ export class UsersController {
   async findOne(@Param("id") id: number): Promise<User> {
     console.log(id);
     return this.usersService.findOne(id);
-  }
-
-  @Get("test")
-  @Redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-  async redirect() {
-    return { url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" };
   }
 
   @Delete(":id")
