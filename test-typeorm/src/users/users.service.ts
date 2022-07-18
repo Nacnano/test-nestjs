@@ -29,7 +29,7 @@ export class UsersService {
     return this.usersRepository.save(newUser);
   }
 
-  async remove(id: string): Promise<void> {
+  async remove(id: number): Promise<void> {
     await this.usersRepository.delete(id);
   }
 
@@ -51,4 +51,8 @@ export class UsersService {
       await queryRunner.release();
     }
   }
+  // async remove(id: number): Promise<void> {
+  //   const user = await this.findOne(id);
+  //   await user.destroy();
+  // }
 }
