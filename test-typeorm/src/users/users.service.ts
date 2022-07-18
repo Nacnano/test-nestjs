@@ -51,8 +51,4 @@ export class UsersService {
       await queryRunner.release();
     }
   }
-  // async remove(id: number): Promise<void> {
-  //   const user = await this.findOne(id);
-  //   await user.destroy();
-  // }
 }
