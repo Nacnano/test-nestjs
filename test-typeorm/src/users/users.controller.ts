@@ -32,7 +32,7 @@ export class UsersController {
 
   @Get()
   async findAll(): Promise<User[]> {
-    console.log("findall");
+    console.log("Findall");
     return this.usersService.findAll();
   }
 
