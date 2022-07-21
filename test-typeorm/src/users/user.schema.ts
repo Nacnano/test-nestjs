@@ -41,7 +41,10 @@ export const UserSchema = new EntitySchema<User>({
     createDate: {
       type: String,
     },
-    lastUpdate: {
+    updateDate: {
+      type: String,
+    },
+    profilePicture: {
       type: String,
     },
   },

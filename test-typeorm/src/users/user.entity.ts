@@ -36,5 +36,8 @@ export class User {
   createDate: string;
 
   @Column()
-  lastUpdate: string;
+  updateDate: string;
+
+  @Column({ type: "json" })
+  profilePicture: { url: string; width: number; height: number };
 }
