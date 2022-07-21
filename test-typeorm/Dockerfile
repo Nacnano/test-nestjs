@@ -1,5 +1,6 @@
 FROM node:16.16-alpine
 WORKDIR /test-typeorm
 COPY . .
-
-CMD ["npm", "start"]
+RUN npm install pnpm
+RUN pnpm
+CMD ["pnpm", "start"]

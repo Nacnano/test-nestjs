@@ -1,13 +1,25 @@
 version: '3.7'
 services: 
+  backend:
+    image: node:16.16-alpine
+    volumes: 
+      - ./backend:/test-typeorm
+    command: pnpm && pnpm start'
+    environment: 
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    ports: 
+      - 3000:3000
   db:
     image: mysql:8.0.29
     volumes: 
       - mysql:/var/lib/mysql
     environment: 
-      MYSQL_DATABASE: test
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-      MYSQL_ROOT_PASSWORD: root
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     ports: 
       - 3306:3306
