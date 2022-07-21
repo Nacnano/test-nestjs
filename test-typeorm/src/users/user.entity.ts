@@ -6,10 +6,22 @@ export class User {
   id: number;
 
   @Column()
+  userId: string;
+
+  @Column()
   firstName: string;
 
   @Column()
   lastName: string;
+
+  @Column()
+  userName: string;
+
+  @Column()
+  displayName: string;
+
+  @Column()
+  role: string;
 
   @Column({ default: "example@nacnano.com" })
   email: string;
@@ -19,4 +31,10 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @Column()
+  createDate: string;
+
+  @Column()
+  lastUpdate: string;
 }

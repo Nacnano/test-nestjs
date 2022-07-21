@@ -10,10 +10,22 @@ export const UserSchema = new EntitySchema<User>({
       primary: true,
       generated: true,
     },
+    userId: {
+      type: String,
+    },
     firstName: {
       type: String,
     },
     lastName: {
+      type: String,
+    },
+    userName: {
+      type: String,
+    },
+    displayName: {
+      type: String,
+    },
+    role: {
       type: String,
     },
     email: {
@@ -25,6 +37,12 @@ export const UserSchema = new EntitySchema<User>({
     isActive: {
       type: Boolean,
       default: true,
+    },
+    createDate: {
+      type: String,
+    },
+    lastUpdate: {
+      type: String,
     },
   },
 });
