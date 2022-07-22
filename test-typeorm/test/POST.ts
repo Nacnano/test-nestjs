@@ -18,3 +18,20 @@
 
   console.log(content);
 })();
+
+fetch("http://localhost:3000/users/", {
+  method: "POST",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    id: 10,
+    userId: "kahsdlsjdj",
+    firstName: "Chotpisit",
+    lastName: "Adunsehawat",
+    email: "chotpisit.adu@nacnano.com",
+    password: "nacnano",
+    isActive: false,
+  }),
+});

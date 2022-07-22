@@ -1,6 +1,8 @@
 import { IsPhoneNumber } from "class-validator";
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
+const date_now = new Date().toISOString().slice(0, 19).replace("T", " ");
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -15,19 +17,19 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column()
+  @Column({ nullable: true })
   userName: string;
 
-  @Column()
+  @Column({ default: "Set Display Name" })
   displayName: string;
 
-  @Column()
+  @Column({ nullable: true })
   gender: string;
 
-  @Column()
+  @Column({ default: "student" })
   role: string;
 
-  @Column()
+  @Column({ nullable: true })
   @IsPhoneNumber()
   phoneNumber: string;
 
@@ -40,15 +42,15 @@ export class User {
   @Column({ default: true })
   isActive: boolean;
 
-  @Column()
-  joinDate: string;
+  @Column({ default: date_now })
+  joinDate: Date;
 
-  @Column()
-  createDate: string;
+  @Column({ default: date_now })
+  createDate: Date;
 
-  @Column()
-  updateDate: string;
+  @Column({ default: date_now })
+  updateDate: Date;
 
-  @Column({ type: "json" })
+  @Column({ type: "json", nullable: true })
   profilePicture: { url: string; width: number; height: number };
 }

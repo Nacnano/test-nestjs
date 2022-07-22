@@ -20,8 +20,10 @@ export class UsersService {
   }
 
   async create(createUserDto: UserDto) {
+    // const newUser = createUserDto.toUserEntity;
     const newUser = new User();
     newUser.id = createUserDto.id;
+    newUser.userId = createUserDto.userId;
     newUser.firstName = createUserDto.firstName;
     newUser.lastName = createUserDto.lastName;
     newUser.isActive = createUserDto.isActive;
