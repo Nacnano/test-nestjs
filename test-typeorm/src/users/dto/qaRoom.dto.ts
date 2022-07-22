@@ -31,7 +31,8 @@ export interface QaSentQueue {
 
 // export interface QaAction {
 //   id: number;
-//   actionType: string;
+//   actionId: string;
+//   typeId: string;
 //   isActive: boolean;
 //   createdAt: Date;
 //   updatedAt: Date;

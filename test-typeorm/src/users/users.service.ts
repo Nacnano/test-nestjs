@@ -20,7 +20,9 @@ export class UsersService {
   }
 
   async create(createUserDto: UserDto) {
+    // Still bug because the method returns "undefined"
     // const newUser = createUserDto.toUserEntity;
+    // console.log("ENTITY " + newUser);
     const newUser = new User();
     newUser.id = createUserDto.id;
     newUser.userId = createUserDto.userId;
@@ -29,13 +31,17 @@ export class UsersService {
     newUser.isActive = createUserDto.isActive;
     newUser.email = createUserDto.email;
     newUser.password = createUserDto.password;
+    newUser.role = createUserDto.role;
     return this.usersRepository.save(newUser);
   }
 
-  // async update(id: number, updateData: UpdateUserDto) {
-  //   const data = await this.usersRepository.findOneBy({ id });
-  //   return this.usersRepository.save(updateData);
-  // }
+  async update(id: number, updateData: UserDto): Promise<User> {
+    const dataToUpdate = await this.usersRepository.findOneBy({ id });
+    for (const key in updateData) {
+      dataToUpdate[key] = updateData[key];
+    }
+    return this.usersRepository.save(dataToUpdate);
+  }
 
   async remove(id: number): Promise<void> {
     await this.usersRepository.delete(id);

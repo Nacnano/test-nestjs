@@ -37,10 +37,12 @@ export class UserDto {
   createDate: Date;
   lastUpdate: Date;
 
-  toUserEntity(): User {
+  get toUserEntity(): User {
+    console.log("IN");
     const newUser = new User();
-    for (const key in UserDto) {
-      console.log(key);
+    for (const key in Object.keys(UserDto)) {
+      console.log(key, this[key]);
+      newUser[key] = this[key];
     }
     return newUser;
   }
