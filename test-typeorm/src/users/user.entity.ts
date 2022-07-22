@@ -1,3 +1,4 @@
+import { IsPhoneNumber } from "class-validator";
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -21,7 +22,14 @@ export class User {
   displayName: string;
 
   @Column()
+  gender: string;
+
+  @Column()
   role: string;
+
+  @Column()
+  @IsPhoneNumber()
+  phoneNumber: string;
 
   @Column({ default: "example@nacnano.com" })
   email: string;
@@ -31,6 +39,9 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @Column()
+  joinDate: string;
 
   @Column()
   createDate: string;
