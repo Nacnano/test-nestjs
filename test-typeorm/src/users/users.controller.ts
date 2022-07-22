@@ -6,10 +6,8 @@ import {
   Param,
   Body,
   Delete,
-  Patch,
 } from "@nestjs/common";
-import { CreateUserDto } from "./dto/createUser.dto";
-import { UpdateUserDto } from "./dto/updateUser.dto";
+import { UserDto } from "./dto/createUser.dto";
 import { UsersService } from "./users.service";
 import { User } from "./user.entity";
 
@@ -26,7 +24,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+  async create(@Body() createUserDto: UserDto): Promise<User> {
     return this.usersService.create(createUserDto);
   }
 
@@ -42,11 +40,6 @@ export class UsersController {
     const foundUser = await this.usersService.findOne(id);
     return foundUser ? foundUser : "User not found";
   }
-
-  // @Patch(":id")
-  // update(@Param("id") id: number, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.usersService.update(+id, updateUserDto);
-  // }
 
   @Delete(":id")
   async remove(@Param("id") id: number): Promise<void> {
