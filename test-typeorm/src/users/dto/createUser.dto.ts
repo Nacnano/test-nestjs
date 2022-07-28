@@ -2,8 +2,7 @@ import { User } from "../user.entity";
 
 export class RoleType {
   id: number;
-  roleId: string;
-  roleName: string;
+  name: string;
   description: string;
   isActive: boolean;
   createdAt: Date;
@@ -11,16 +10,14 @@ export class RoleType {
 
 export class StarType {
   id: number;
-  starId: number;
-  starName: string;
-  starColor: string;
-  starDescription: string;
+  name: string;
+  color: string;
+  description: string;
   createdAt: Date;
   updatedAt: Date;
 }
 export class UserDto {
   id: number;
-  userId: string;
   firstName: string;
   lastName: string;
   userName: string;
@@ -28,7 +25,7 @@ export class UserDto {
   starId: string;
   comment: string;
   gender: string;
-  role: string;
+  roleId: string;
   phoneNumber: string;
   email: string;
   password: string;
