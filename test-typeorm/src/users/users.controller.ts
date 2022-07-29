@@ -8,7 +8,7 @@ import {
   Delete,
   Patch,
 } from "@nestjs/common";
-import { UserDto } from "./dto/createUser.dto";
+import { UserDto } from "./dto/user.dto";
 import { UsersService } from "./users.service";
 import { User } from "./user.entity";
 
