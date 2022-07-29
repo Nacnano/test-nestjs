@@ -5,18 +5,18 @@ import { Repository } from "typeorm";
 import { UserDto } from "../dto/user.dto";
 
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>
+    private userRepository: Repository<User>
   ) {}
 
   async findAll(): Promise<User[]> {
-    return this.usersRepository.find();
+    return this.userRepository.find();
   }
 
   async findOne(id: string): Promise<User> {
-    return this.usersRepository.findOneBy({ id });
+    return this.userRepository.findOneBy({ id });
   }
 
   async create(createUserDto: UserDto) {
@@ -31,18 +31,18 @@ export class UsersService {
     newUser.email = createUserDto.email;
     newUser.password = createUserDto.password;
     newUser.roleId = createUserDto.roleId;
-    return this.usersRepository.save(newUser);
+    return this.userRepository.save(newUser);
   }
 
   async update(id: string, updateData: UserDto): Promise<User> {
-    const dataToUpdate = await this.usersRepository.findOneBy({ id });
+    const dataToUpdate = await this.userRepository.findOneBy({ id });
     for (const key in updateData) {
       dataToUpdate[key] = updateData[key];
     }
-    return this.usersRepository.save(dataToUpdate);
+    return this.userRepository.save(dataToUpdate);
   }
 
   async remove(id: number): Promise<void> {
-    await this.usersRepository.delete(id);
+    await this.userRepository.delete(id);
   }
 }

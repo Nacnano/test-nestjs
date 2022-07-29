@@ -4,6 +4,7 @@ import { UsersModule } from "./user/user.module";
 import { User } from "./user/user.entity";
 import { ConfigModule } from "@nestjs/config";
 import { QaQueue } from "./qaroom/qaroom.entity";
+import { MainController } from "./main.controller";
 ConfigModule.forRoot({ envFilePath: ".env" });
 
 @Module({
@@ -21,5 +22,6 @@ ConfigModule.forRoot({ envFilePath: ".env" });
     }),
     UsersModule,
   ],
+  controllers: [MainController],
 })
 export class AppModule {}
