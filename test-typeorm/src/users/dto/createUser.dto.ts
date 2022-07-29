@@ -34,6 +34,7 @@ export class UserDto {
   joinDate: Date;
   createDate: Date;
   lastUpdate: Date;
+  profilePicture: object;
 
   get toUserEntity(): User {
     console.log("IN");

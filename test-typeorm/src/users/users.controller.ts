@@ -41,7 +41,7 @@ export class UsersController {
   }
 
   @Get(":id")
-  async findOne(@Param("id") id: number): Promise<any> {
+  async findOne(@Param("id") id: string): Promise<any> {
     console.log(id);
     const foundUser = await this.usersService.findOne(id);
     return foundUser ? foundUser : "User not found";

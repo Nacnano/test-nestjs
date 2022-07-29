@@ -6,12 +6,9 @@ export const UserSchema = new EntitySchema<User>({
   target: User,
   columns: {
     id: {
-      type: Number,
+      type: String,
       primary: true,
       generated: true,
-    },
-    userId: {
-      type: String,
     },
     firstName: {
       type: String,
@@ -25,7 +22,7 @@ export const UserSchema = new EntitySchema<User>({
     displayName: {
       type: String,
     },
-    role: {
+    roleId: {
       type: String,
     },
     email: {

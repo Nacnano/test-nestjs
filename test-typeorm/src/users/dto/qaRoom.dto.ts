@@ -1,31 +1,41 @@
-export interface QaQueueType {
-  id: number;
-  name: string;
-  description: string;
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+export enum QaQueueTypeList {
+  seeStaff = "seeStaff",
+  askQuestion = "askQuestion",
+  checkWork = "checkWork",
+  newSheet = "newSheet",
+  oralTest = "oralTest",
+  clearFolder = "clearFolder",
 }
 
-export interface QaQueue {
-  id: number;
-  userId: string;
-  queueTypeId: string;
-  sheetId: string;
-  comment: string;
-  isActive: boolean;
-  queueCreatedAt: Date;
-  queueUpdatedAt: Date;
-  linkUrl: string;
-  sederUserId: string;
-  sendMessage: string;
-  sendCreatedAt: Date;
-  sendUpdatedAt: Date;
-  deleterUserId: string;
-  deleteMessage: string;
-  deleteCreatedAt: Date;
-  deleteUpdatedAt: Date;
-}
+console.log(Object.keys(QaQueueTypeList));
+
+export const QaQueueType = {
+  id: Object.keys(QaQueueTypeList),
+  description: String,
+  isActive: Boolean,
+  createdAt: Date,
+  updatedAt: Date,
+};
+
+export const QaQueue = {
+  id: Number,
+  userId: String,
+  queueTypeId: String,
+  sheetId: String,
+  comment: String,
+  isActive: Boolean,
+  queueCreatedAt: Date,
+  queueUpdatedAt: Date,
+  linkUrl: String,
+  sederUserId: String,
+  sendMessage: String,
+  sendCreatedAt: Date,
+  sendUpdatedAt: Date,
+  deleterUserId: String,
+  deleteMessage: String,
+  deleteCreatedAt: Date,
+  deleteUpdatedAt: Date,
+};
 
 // export interface QaAction {
 //   id: number;

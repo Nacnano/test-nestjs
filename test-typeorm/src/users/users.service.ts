@@ -15,7 +15,7 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  async findOne(id: number): Promise<User> {
+  async findOne(id: string): Promise<User> {
     return this.usersRepository.findOneBy({ id });
   }
 
@@ -25,17 +25,16 @@ export class UsersService {
     // console.log("ENTITY " + newUser);
     const newUser = new User();
     newUser.id = createUserDto.id;
-    newUser.userId = createUserDto.userId;
     newUser.firstName = createUserDto.firstName;
     newUser.lastName = createUserDto.lastName;
     newUser.isActive = createUserDto.isActive;
     newUser.email = createUserDto.email;
     newUser.password = createUserDto.password;
-    newUser.role = createUserDto.role;
+    newUser.roleId = createUserDto.roleId;
     return this.usersRepository.save(newUser);
   }
 
-  async update(id: number, updateData: UserDto): Promise<User> {
+  async update(id: string, updateData: UserDto): Promise<User> {
     const dataToUpdate = await this.usersRepository.findOneBy({ id });
     for (const key in updateData) {
       dataToUpdate[key] = updateData[key];

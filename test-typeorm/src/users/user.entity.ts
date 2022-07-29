@@ -6,10 +6,7 @@ const date_now = new Date().toISOString().slice(0, 19).replace("T", " ");
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  userId: string;
+  id: string;
 
   @Column()
   firstName: string;
@@ -27,7 +24,7 @@ export class User {
   gender: string;
 
   @Column({ default: "student" })
-  role: string;
+  roleId: string;
 
   @Column({ nullable: true })
   @IsPhoneNumber()
