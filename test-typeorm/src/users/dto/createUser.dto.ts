@@ -1,15 +1,16 @@
 import { User } from "../user.entity";
 
 export class RoleType {
-  id: number;
+  id: string;
   name: string;
   description: string;
   isActive: boolean;
   createdAt: Date;
+  updatedAt: Date;
 }
 
 export class StarType {
-  id: number;
+  id: string;
   name: string;
   color: string;
   description: string;
@@ -17,7 +18,7 @@ export class StarType {
   updatedAt: Date;
 }
 export class UserDto {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
   userName: string;
@@ -30,7 +31,7 @@ export class UserDto {
   email: string;
   password: string;
   isActive: boolean;
-  joinDate: string;
+  joinDate: Date;
   createDate: Date;
   lastUpdate: Date;
 
