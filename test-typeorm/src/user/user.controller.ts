@@ -7,7 +7,7 @@ import {
   Delete,
   Patch,
 } from "@nestjs/common";
-import { UserDto } from "../dto/user.dto";
+import { UserDto } from "./user.dto";
 import { UserService } from "./user.service";
 import { User } from "./user.entity";
 
@@ -33,7 +33,6 @@ export class UserController {
 
   @Get(":id")
   async findOne(@Param("id") id: string): Promise<any> {
-    console.log(id);
     const foundUser = await this.userService.findOne(id);
     return foundUser ? foundUser : "User not found";
   }

@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "./user.entity";
 import { Repository } from "typeorm";
-import { UserDto } from "../dto/user.dto";
+import { UserDto } from "./user.dto";
 
 @Injectable()
 export class UserService {
@@ -20,9 +20,6 @@ export class UserService {
   }
 
   async create(createUserDto: UserDto) {
-    // Still bug because the method returns "undefined"
-    // const newUser = createUserDto.toUserEntity;
-    // console.log("ENTITY " + newUser);
     const newUser = new User();
     newUser.id = createUserDto.id;
     newUser.firstName = createUserDto.firstName;
@@ -31,6 +28,7 @@ export class UserService {
     newUser.email = createUserDto.email;
     newUser.password = createUserDto.password;
     newUser.roleId = createUserDto.roleId;
+    // Can add more columns if needed
     return this.userRepository.save(newUser);
   }
 

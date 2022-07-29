@@ -9,48 +9,45 @@ export enum QaQueueTypeList {
 
 console.log(Object.keys(QaQueueTypeList));
 
-export const QaQueueTypeDto = {
-  id: {
-    type: String,
-    enum: Object.keys(QaQueueTypeList),
-  },
-  description: String,
-  isActive: Boolean,
-  createdAt: Date,
-  updatedAt: Date,
-};
+export class QaQueueTypeDto {
+  id: string;
+  description: string;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-export const QaQueueDto = {
-  id: String,
-  userId: String,
-  queueTypeId: String,
-  sheetId: String,
-  comment: String,
-  isActive: Boolean,
-  queueCreatedAt: Date,
-  queueUpdatedAt: Date,
-  linkUrl: String,
-  sederUserId: String,
-  sendMessage: String,
-  sendCreatedAt: Date,
-  sendUpdatedAt: Date,
-  deleterUserId: String,
-  deleteMessage: String,
-  deleteCreatedAt: Date,
-  deleteUpdatedAt: Date,
-};
+export class QaQueueDto {
+  id: string;
+  userId: string;
+  queueTypeId: string;
+  sheetId: string;
+  comment: string;
+  isActive: boolean;
+  queueCreatedAt: Date;
+  queueUpdatedAt: Date;
+  linkUrl: string;
+  sederUserId: string;
+  sendMessage: string;
+  sendCreatedAt: Date;
+  sendUpdatedAt: Date;
+  deleterUserId: string;
+  deleteMessage: string;
+  deleteCreatedAt: Date;
+  deleteUpdatedAt: Date;
+}
 
 // export interface QaAction {
-//   id: String;
-//   typeId: String;
+//   id: string;
+//   typeId: string;
 //   isActive: boolean;
 //   createdAt: Date;
 //   updatedAt: Date;
 // }
 
 // export interface QaActionType {
-//   id: String;
-//   name: String;
+//   id: string;
+//   name: string;
 //   isActive: boolean;
 //   createdAt: Date;
 //   updatedAt: Date;
