@@ -35,14 +35,4 @@ export class UserDto {
   createDate: Date;
   lastUpdate: Date;
   profilePicture: object;
-
-  get toUserEntity(): User {
-    console.log("IN");
-    const newUser = new User();
-    for (const key in Object.keys(UserDto)) {
-      console.log(key, this[key]);
-      newUser[key] = this[key];
-    }
-    return newUser;
-  }
 }

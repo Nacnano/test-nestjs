@@ -10,9 +10,6 @@ export const QaRoomSchema = new EntitySchema<QaQueue>({
       primary: true,
       generated: true,
     },
-    userId: {
-      type: String,
-    },
     queueTypeId: {
       type: String,
     },

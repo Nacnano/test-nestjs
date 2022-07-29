@@ -1,5 +1,6 @@
 import { IsPhoneNumber } from "class-validator";
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { QaQueue } from "src/qaroom/qaroom.entity";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
 const date_now = new Date().toISOString().slice(0, 19).replace("T", " ");
 
@@ -50,4 +51,7 @@ export class User {
 
   @Column({ type: "json", nullable: true })
   profilePicture: { url: string; width: number; height: number };
+
+  @OneToMany(() => QaQueue, (qaQueue) => qaQueue.user)
+  qaQueues?: QaQueue[];
 }

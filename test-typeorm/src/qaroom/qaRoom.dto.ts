@@ -1,3 +1,5 @@
+import { User } from "src/user/user.entity";
+
 export enum QaQueueTypeList {
   seeStaff = "seeStaff",
   askQuestion = "askQuestion",
@@ -19,7 +21,7 @@ export class QaQueueTypeDto {
 
 export class QaQueueDto {
   id: string;
-  userId: string;
+  userId: User;
   queueTypeId: string;
   sheetId: string;
   comment: string;

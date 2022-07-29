@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "src/user/user.entity";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 
 const date_now = new Date().toISOString().slice(0, 19).replace("T", " ");
 
@@ -7,8 +8,8 @@ export class QaQueue {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column()
-  userId: string;
+  // @Column()
+  // userId: string;
 
   @Column()
   queueTypeId: string;
@@ -27,4 +28,7 @@ export class QaQueue {
 
   @Column({ default: date_now })
   queueUpdatedAt: Date;
+
+  @ManyToOne(() => User, (user) => user.qaQueues)
+  user?: User;
 }

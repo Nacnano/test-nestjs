@@ -17,7 +17,7 @@ export class QaRoomService {
   async create(queueData: QaQueueDto) {
     const newQueue = new QaQueue();
     newQueue.id = queueData.id;
-    newQueue.userId = queueData.userId;
+    newQueue.user = queueData.userId;
     newQueue.queueTypeId = queueData.queueTypeId;
     newQueue.sheetId = queueData.sheetId;
     newQueue.comment = queueData.comment;
