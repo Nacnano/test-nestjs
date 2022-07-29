@@ -1,5 +1,3 @@
-import { User } from "./user.entity";
-
 export class RoleType {
   id: string;
   name: string;
@@ -34,5 +32,12 @@ export class UserDto {
   joinDate: Date;
   createDate: Date;
   lastUpdate: Date;
-  profilePicture: object;
+}
+
+export class PictureDto {
+  id: string;
+  name: string;
+  url: string;
+  width: number;
+  height: number;
 }

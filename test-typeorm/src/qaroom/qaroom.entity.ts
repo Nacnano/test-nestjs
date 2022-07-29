@@ -8,9 +8,6 @@ export class QaQueue {
   @PrimaryGeneratedColumn()
   id: string;
 
-  // @Column()
-  // userId: string;
-
   @Column()
   queueTypeId: string;
 
@@ -29,6 +26,6 @@ export class QaQueue {
   @Column({ default: date_now })
   queueUpdatedAt: Date;
 
-  @ManyToOne(() => User, (user) => user.qaQueues)
+  @ManyToOne(() => User, (user) => user.qaQueues, { cascade: true })
   user?: User;
 }

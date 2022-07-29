@@ -14,6 +14,12 @@ export class QaRoomController {
   async create(@Body() newQueue: QaQueueDto): Promise<QaQueue> {
     return this.qaQueueService.create(newQueue);
   }
+
+  @Post("update")
+  async update(@Body() updateQueue: QaQueueDto): Promise<any> {
+    return this.qaQueueService.update(updateQueue.id, updateQueue);
+  }
+
   @Get()
   async findall(): Promise<QaQueue[]> {
     return this.qaQueueService.findall();

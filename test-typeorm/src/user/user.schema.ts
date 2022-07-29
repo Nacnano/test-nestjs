@@ -1,5 +1,6 @@
 import { EntitySchema } from "typeorm";
 import { User } from "./user.entity";
+import { Picture } from "./user.entity";
 
 export const UserSchema = new EntitySchema<User>({
   name: "User",
@@ -41,7 +42,20 @@ export const UserSchema = new EntitySchema<User>({
     updateDate: {
       type: String,
     },
-    profilePicture: {
+    // profilePicture: {
+    //   type: String,
+    // },
+  },
+});
+
+export const profilePicture = new EntitySchema<Picture>({
+  name: "profilePicture",
+  target: Picture,
+  columns: {
+    id: {
+      type: String,
+    },
+    url: {
       type: String,
     },
   },

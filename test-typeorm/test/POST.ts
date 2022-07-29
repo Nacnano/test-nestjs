@@ -37,3 +37,6 @@ fetch("http://localhost:3000/users", {
     isActive: true,
   }),
 });
+
+// Iino Picture
+// https://i.imgur.com/aFUtdlR.jpeg

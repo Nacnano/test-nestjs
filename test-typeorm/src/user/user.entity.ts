@@ -49,9 +49,27 @@ export class User {
   @Column({ default: date_now })
   updateDate: Date;
 
-  @Column({ type: "json", nullable: true })
-  profilePicture: { url: string; width: number; height: number };
+  // @Column({ nullable: true })
+  // profilePicture: Picture;
 
   @OneToMany(() => QaQueue, (qaQueue) => qaQueue.user)
   qaQueues?: QaQueue[];
+}
+
+@Entity()
+export class Picture {
+  @PrimaryGeneratedColumn()
+  id: string;
+
+  @Column()
+  name: string;
+
+  @Column()
+  url: string;
+
+  @Column()
+  width: number;
+
+  @Column()
+  height: number;
 }

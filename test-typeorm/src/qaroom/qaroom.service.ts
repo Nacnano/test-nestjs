@@ -27,6 +27,16 @@ export class QaRoomService {
     return this.qaQueueRepository.save(newQueue);
   }
 
+  async update(id: string, queueData: QaQueueDto) {
+    const dataToUpdate = await this.qaQueueRepository.findOneBy({ id });
+    for (const key in dataToUpdate) {
+      dataToUpdate[key] = queueData[key];
+    }
+    return dataToUpdate
+      ? this.qaQueueRepository.save(dataToUpdate)
+      : "Queue not found";
+  }
+
   async findall() {
     return this.qaQueueRepository.find();
   }
