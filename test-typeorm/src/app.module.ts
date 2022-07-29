@@ -5,6 +5,7 @@ import { User } from "./user/user.entity";
 import { ConfigModule } from "@nestjs/config";
 import { QaQueue } from "./qaroom/qaroom.entity";
 import { MainController } from "./main.controller";
+import { QaRoomModule } from "./qaroom/qaroom.module";
 ConfigModule.forRoot({ envFilePath: ".env" });
 
 @Module({
@@ -21,6 +22,7 @@ ConfigModule.forRoot({ envFilePath: ".env" });
       autoLoadEntities: true,
     }),
     UsersModule,
+    QaRoomModule,
   ],
   controllers: [MainController],
 })

@@ -2,7 +2,6 @@ import {
   Controller,
   Get,
   Post,
-  Redirect,
   Param,
   Body,
   Delete,
@@ -11,15 +10,6 @@ import {
 import { UserDto } from "../dto/user.dto";
 import { UserService } from "./user.service";
 import { User } from "./user.entity";
-
-// @Controller()
-// export class MainController {
-//   @Get()
-//   @Redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-//   async redirect(): Promise<object> {
-//     return { url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" };
-//   }
-// }
 
 @Controller("user")
 export class UserController {

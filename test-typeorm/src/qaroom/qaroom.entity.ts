@@ -19,7 +19,7 @@ export class QaQueue {
   @Column()
   comment: string;
 
-  @Column()
+  @Column({ default: true })
   isActive: boolean;
 
   @Column({ default: date_now })
