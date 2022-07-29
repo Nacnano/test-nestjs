@@ -3,6 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { UsersModule } from "./users/users.module";
 import { User } from "./users/user.entity";
 import { ConfigModule } from "@nestjs/config";
+import { QaQueue } from "./users/qaroom.entity";
 ConfigModule.forRoot({ envFilePath: ".env" });
 
 @Module({
@@ -14,7 +15,7 @@ ConfigModule.forRoot({ envFilePath: ".env" });
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [User],
+      entities: [User, QaQueue],
       synchronize: true,
       autoLoadEntities: true,
     }),

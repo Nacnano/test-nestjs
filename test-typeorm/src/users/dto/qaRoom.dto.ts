@@ -9,16 +9,19 @@ export enum QaQueueTypeList {
 
 console.log(Object.keys(QaQueueTypeList));
 
-export const QaQueueType = {
-  id: Object.keys(QaQueueTypeList),
+export const QaQueueTypeDto = {
+  id: {
+    type: String,
+    enum: Object.keys(QaQueueTypeList),
+  },
   description: String,
   isActive: Boolean,
   createdAt: Date,
   updatedAt: Date,
 };
 
-export const QaQueue = {
-  id: Number,
+export const QaQueueDto = {
+  id: String,
   userId: String,
   queueTypeId: String,
   sheetId: String,
@@ -38,18 +41,16 @@ export const QaQueue = {
 };
 
 // export interface QaAction {
-//   id: number;
-//   actionId: string;
-//   typeId: string;
+//   id: String;
+//   typeId: String;
 //   isActive: boolean;
 //   createdAt: Date;
 //   updatedAt: Date;
 // }
 
 // export interface QaActionType {
-//   id: number;
-//   Id: string;
-//   name: string;
+//   id: String;
+//   name: String;
 //   isActive: boolean;
 //   createdAt: Date;
 //   updatedAt: Date;
