@@ -1,4 +1,4 @@
-import { User } from "../users/user.entity";
+import { User } from "../user/user.entity";
 
 export default () => ({
   port: parseInt(process.env.PORT, 10) || 3000,

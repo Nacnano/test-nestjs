@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { UsersModule } from "./users/users.module";
-import { User } from "./users/user.entity";
+import { UsersModule } from "./user/user.module";
+import { User } from "./user/user.entity";
 import { ConfigModule } from "@nestjs/config";
-import { QaQueue } from "./users/qaroom.entity";
+import { QaQueue } from "./qaroom/qaroom.entity";
 ConfigModule.forRoot({ envFilePath: ".env" });
 
 @Module({
